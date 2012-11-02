@@ -19,6 +19,7 @@ const
   MSG_OPTIONS             = MSG_BASE + 1;
   MSG_SET_PLUGINCONTACT   = MSG_BASE + 2;
   MSG_SET_XSTATUS         = MSG_BASE + 10;
+  MSG_UPDATE_TABLE        = MSG_BASE + 20;
   //
   SQL_DROP                = 'DROP TABLE IF EXISTS "Statuses";';
   SQL_CREATE_NOEXISTS     = 'CREATE TABLE IF NOT EXISTS "Statuses" ("ID" INTEGER PRIMARY KEY, "Image" NUMERIC, "Header" TEXT, "Description" TEXT);';
@@ -29,7 +30,7 @@ const
   SQL_UPDATE              = 'UPDATE "Statuses" SET "Image" = "%d", "Header" = "%s", "Description" = "%s" WHERE "ID" = "%d";';
   SQL_DELETE              = 'DELETE FROM "Statuses" WHERE "ID" = "%d";';
   //
-  CURRENT_UPDATE          = 'http://dl.dropbox.com/u/836287/Dev/StatusManager/Current';
+  CURRENT_UPDATE          = 'http://qip-plugin-sm.googlecode.com/svn/service/plugcheck';
 
 type
   TSquare = class(TPersistent)
@@ -74,6 +75,7 @@ type
     FBackupCount: Integer;
     FStatusParams: TStatusParams;
     FColorScheme: TColorScheme;
+    FDownloadLink: String;
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -95,6 +97,7 @@ type
     property BackupCount: Integer read FBackupCount write FBackupCount;
     property StatusParams: TStatusParams read FStatusParams write FStatusParams;
     property ColorScheme: TColorScheme read FColorScheme write FColorScheme;
+    property DownloadLink: String read FDownloadLink write FDownloadLink;
   end;
   TStatus = record
     Image: Integer;
@@ -220,6 +223,7 @@ begin
   begin
     Background := clWindow;
   end;
+  FDownloadLink := 'http://qip-plugin-sm.googlecode.com/svn/service/plugcheck';
 end;
 
 destructor TPluginOptions.Destroy;
