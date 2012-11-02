@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A9519056-C5A5-4466-B516-29921A7B46DF}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Importer\Importer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Plugin\StatusManager.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Importer">
+        <MSBuild Projects="Importer\Importer.dproj"/>
+    </Target>
+    <Target Name="Importer:Clean">
+        <MSBuild Projects="Importer\Importer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Importer:Make">
+        <MSBuild Projects="Importer\Importer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="StatusManager">
+        <MSBuild Projects="Plugin\StatusManager.dproj"/>
+    </Target>
+    <Target Name="StatusManager:Clean">
+        <MSBuild Projects="Plugin\StatusManager.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="StatusManager:Make">
+        <MSBuild Projects="Plugin\StatusManager.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Importer;StatusManager"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Importer:Clean;StatusManager:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Importer:Make;StatusManager:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
