@@ -102,7 +102,6 @@ object frmMain: TfrmMain
     Images = imglMain
     TabOrder = 2
     OnClick = btnRunClick
-    ExplicitTop = 288
   end
   object grOptions: TGroupBox
     Left = 8
@@ -124,7 +123,7 @@ object frmMain: TfrmMain
       Top = 39
       Width = 391
       Height = 17
-      Caption = 'Import only statuses with non-empty header and description'
+      Caption = 'Import only statuses with non-empty header or description'
       Checked = True
       State = cbChecked
       TabOrder = 1
@@ -145,7 +144,7 @@ object frmMain: TfrmMain
     Left = 440
     Top = 16
     Bitmap = {
-      494C010102000800140010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010102000800180010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

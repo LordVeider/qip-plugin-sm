@@ -32,7 +32,7 @@ object frmSettings: TfrmSettings
     Margins.Top = 8
     Margins.Right = 7
     Margins.Bottom = 39
-    ActivePage = tsAbout
+    ActivePage = tsIntegration
     Align = alClient
     Images = imglSettings
     MultiLine = True
@@ -40,10 +40,6 @@ object frmSettings: TfrmSettings
     object tsIntegration: TTabSheet
       Caption = 'Integration'
       ImageIndex = 6
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object rgContactIcon: TRadioGroup
         Left = 6
         Top = 76
@@ -327,7 +323,7 @@ object frmSettings: TfrmSettings
     Left = 568
     Top = 304
     Bitmap = {
-      494C010107000800500010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010107000800540010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       000000000000000000000000000000000000000000120000002C0303036D0404
       0481030303810202028102020282020202830303038303030383040404830505

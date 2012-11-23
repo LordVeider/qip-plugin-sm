@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.DBGrids, Vcl.ImgList,
   Vcl.StdCtrls, Data.FMTBcd, Datasnap.DBClient, Data.DB, Data.SqlExpr,
-  Datasnap.Provider, Data.DbxSqlite, Vcl.ExtCtrls,
+  Datasnap.Provider, Data.DbxSqlite, Vcl.ExtCtrls, MidasLib,
   LibCommon;
 
 type
