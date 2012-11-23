@@ -217,7 +217,7 @@ begin
                   Query := Format(SQL_INSERT, [Image, Header, Description]);
                 //Do with options
                 if FCheckEmpty then
-                  if (Header.IsEmpty or Description.IsEmpty) then
+                  if (Header.IsEmpty and Description.IsEmpty) then
                     //do nothing
                   else
                     Connection.Execute(Query, nil)
