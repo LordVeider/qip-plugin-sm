@@ -98,10 +98,6 @@ object frmSettings: TfrmSettings
     object tsActions: TTabSheet
       Caption = 'Status List'
       ImageIndex = 5
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object chkFilterSave: TCheckBox
         Left = 14
         Top = 3
@@ -122,10 +118,23 @@ object frmSettings: TfrmSettings
     object tsDatabase: TTabSheet
       Caption = 'Database'
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      object lblNotice: TLabel
+        Left = 14
+        Top = 50
+        Width = 363
+        Height = 65
+        AutoSize = False
+        Caption = 
+          'Notice: Enabling "Save contacts X-Statuses to database" may caus' +
+          'e trash and duplicate statuses in database'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clHighlight
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        WordWrap = True
+      end
       object chkSaveStatusMyself: TCheckBox
         Left = 14
         Top = 3
@@ -136,12 +145,20 @@ object frmSettings: TfrmSettings
       end
       object chkBackupEnabled: TCheckBox
         Left = 14
-        Top = 26
+        Top = 89
         Width = 401
         Height = 17
         Caption = 'Automatically backup database'
         TabOrder = 1
         Visible = False
+      end
+      object chkSaveStatusContacts: TCheckBox
+        Left = 14
+        Top = 26
+        Width = 401
+        Height = 17
+        Caption = 'Save contacts X-Statuses to database'
+        TabOrder = 2
       end
     end
     object tsAbout: TTabSheet
@@ -323,7 +340,7 @@ object frmSettings: TfrmSettings
     Left = 568
     Top = 304
     Bitmap = {
-      494C010107000800540010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010107000800580010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       000000000000000000000000000000000000000000120000002C0303036D0404
       0481030303810202028102020282020202830303038303030383040404830505

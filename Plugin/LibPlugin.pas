@@ -67,6 +67,7 @@ type
       const AccountName, ProtoName: WideString; const BtnData: TBtnClick); override;
     procedure XStatusChanged(const ActiveStatus: Integer;
       const StatusText, StatusDescription: WideString); override;
+    procedure ContactXStatusChanged(var Message: TPluginMessage);	message PM_PLUGIN_CONT_XST_CHANGE;
     procedure AntiBossChanged(const SwitchedOn: Boolean); override;
     procedure PluginMessageReceived(SenderDllHandle: Integer; var LParam, NParam, AResult: Integer); override;
   public
@@ -408,6 +409,36 @@ begin
     FThread := TSQLThread.Create(FConnection, FSemaphore, Query);
   end;
   InvalidateFakeContact(FPluginContactID);
+end;
+
+procedure TQipPlugin.ContactXStatusChanged(var Message: TPluginMessage);
+var
+  DelimPos: Integer;
+  Image: Integer;
+  Header, Description: String;
+  Query: String;
+begin
+  if FPluginOptions.SaveStatusContacts then
+    with Message do
+      if (WParam <> 0) and (LParam <> 0) then   //Check params
+        if NParam > 0 then                      //Check image index
+        begin
+          if NParam > 35 then                   //Trim extended status packs codes
+            Image := 30
+          else
+            Image := NParam;
+          Description := PChar(Result);
+          DelimPos := Pos('|', Description);
+          Header := Copy(Description, 1, DelimPos-1);
+          Header := StringReplace(Header, '"', '""', [rfReplaceAll]);
+          Delete(Description, 1, DelimPos);
+          Description := StringReplace(Description, '"', '""', [rfReplaceAll]);
+          if not (Header.IsEmpty and Description.IsEmpty) then
+          begin
+            Query := Format(SQL_INSERT_NODUPLICATE, [Image, Header, Description]);
+            FThread := TSQLThread.Create(FConnection, FSemaphore, Query);
+          end;
+        end;
 end;
 
 procedure TQipPlugin.AntiBossChanged(const SwitchedOn: Boolean);

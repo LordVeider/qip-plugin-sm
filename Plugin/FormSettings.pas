@@ -39,6 +39,8 @@ type
     chkCloseAfterApply: TCheckBox;
     chkSaveStatusMyself: TCheckBox;
     chkBackupEnabled: TCheckBox;
+    chkSaveStatusContacts: TCheckBox;
+    lblNotice: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnCancelClick(Sender: TObject);
     procedure btnOkClick(Sender: TObject);
@@ -77,6 +79,7 @@ begin
     chkCloseAfterApply.Checked := CloseAfterApply;
     //Database
     chkSaveStatusMyself.Checked := SaveStatusMyself;
+    chkSaveStatusContacts.Checked := SaveStatusContacts;
     //Self
     Self.Color := ColorScheme.Background;
   end;
@@ -109,6 +112,7 @@ begin
     CloseAfterApply := chkCloseAfterApply.Checked;
     //Database
     SaveStatusMyself := chkSaveStatusMyself.Checked;
+    SaveStatusContacts:= chkSaveStatusContacts.Checked;
     SendMessage(FPluginHWnd, MSG_SET_PLUGINCONTACT, Integer(ContactShow), 0);
   end;
   Close;
